@@ -7,9 +7,10 @@ set -e
 CONTAINER_NAME="pcp-service"
 REMOTE_CONF_PATH="/tmp/custom_pmlogger.conf"
 # DYNAMIC FIX: Automatically detects the correct directory name using your host's literal hostname
-HOST_FQDN=$(hostname)
+##HOST_FQDN=$(hostname)
 ##REMOTE_ARCHIVE_PATH="/var/log/pcp/pmlogger/${HOST_FQDN}/benchmark_run"
-REMOTE_ARCHIVE_PATH="/var/log/pcp/pmlogger/vllm_bench_run"
+WORKLOAD="vllm_bench_run"
+REMOTE_ARCHIVE_PATH="/var/log/pcp/pmlogger/${WORKLOAD}"
 
 # Path to your external configuration file on the host
 EXTERNAL_HOST_CONF="./pmlogger.conf"
@@ -80,7 +81,7 @@ echo "SUCCESS: Benchmark archive extracted to: ${HOST_OUTPUT_DIR}"
 
 # --- STEP 7: VALIDATION VIA PMDUMPLOG ---
 echo "=== [VALIDATION] Verifying Archive Content Integrity ==="
-LOCAL_ARCHIVE_BASE="${HOST_OUTPUT_DIR}/benchmark_run"
+LOCAL_ARCHIVE_BASE="${HOST_OUTPUT_DIR}/${WORKLOAD}"
 if [ -f "${LOCAL_ARCHIVE_BASE}.index" ] || [ -f "${LOCAL_ARCHIVE_BASE}.0" ]; then
     echo "--------------------------------------------------------"
     if command -v pmdumplog &> /dev/null; then
