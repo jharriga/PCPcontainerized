@@ -8,7 +8,7 @@ CONTAINER_NAME="pcp-service"
 REMOTE_CONF_PATH="/tmp/custom_pmlogger.conf"
 # DYNAMIC FIX: Automatically detects the correct directory name using your host's literal hostname
 HOST_FQDN=$(hostname)
-REMOTE_ARCHIVE_PATH="/var/log/pcp/pmlogger/${HOST_FQDN}/benchmark_run"
+REMOTE_ARCHIVE_PATH="/var/log/pcp/pmlogger/60s_idle_run"
 BENCHMARK_DURATION_SECS=60  # <-- CHANGE THIS TO ADJUST RUNTIME
 
 # Path to your external configuration file on the host
