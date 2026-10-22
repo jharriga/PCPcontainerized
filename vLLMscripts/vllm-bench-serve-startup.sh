@@ -109,7 +109,7 @@ END_BENCH_SERVE=$(date +%s.%N)
 TOTAL_HEALTH=$(echo "$HEALTH_TIME - $START_TIME" | bc)
 TOTAL_READY=$(echo "$READY_TIME - $START_TIME" | bc)
 MODEL_LOADING_LAG=$(echo "$READY_TIME - $HEALTH_TIME" | bc)
-TOTAL_BENCH_SERVE=$(echo "$START_BENCH_SERVE - $END_BENCH_SERVE" | bc)
+TOTAL_BENCH_SERVE=$(echo "$END_BENCH_SERVE - $START_BENCH_SERVE" | bc)
 
 echo -e "\n=============================================="
 echo -e "         vLLM CPU STARTUP BENCHMARK"
