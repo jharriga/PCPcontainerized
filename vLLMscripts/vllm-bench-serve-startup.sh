@@ -5,9 +5,9 @@ set -eo pipefail
 
 # --- CONFIGURATION ---
 MODEL_NAME="facebook/opt-125m"  # Replace with your target model
+MODEL2="Qwen/Qwen2.5-1.5B-Instruct"      # Larger Model
 CONTAINER_NAME="vllm-cpu-benchmark"
 IMAGE_NAME="docker.io/vllm/vllm-openai-cpu:v0.31.0"
-##IMAGE_NAME="vllm/vllm-openai:cpu"
 PORT=8000
 
 # Cleanup handler to ensure podman container is stopped if script is interrupted
