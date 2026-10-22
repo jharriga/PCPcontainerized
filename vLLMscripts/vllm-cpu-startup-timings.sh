@@ -87,6 +87,7 @@ MODEL_LOADING_LAG=$(echo "$READY_TIME - $HEALTH_TIME" | bc)
 echo -e "\n=============================================="
 echo -e "         vLLM CPU STARTUP BENCHMARK"
 echo -e "=============================================="
+echo -e "Image Name:          ${IMAGE_NAME}"
 echo -e "Model Name:          ${MODEL_NAME}"
 echo -e "HTTP Base Server:    $(printf "%.2f" "$TOTAL_HEALTH") seconds"
 echo -e "Inference Ready:     $(printf "%.2f" "$TOTAL_READY") seconds"
