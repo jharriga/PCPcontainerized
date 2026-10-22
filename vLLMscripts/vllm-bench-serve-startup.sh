@@ -51,7 +51,7 @@ fi
 
 HEALTH_TIME=""
 READY_TIME=""
-TIMEOUT=600 # 10 minutes timeout
+TIMEOUT=600       # 10 minutes timeout
 ELAPSED=0
 
 # --- POLLING LOOP ---
