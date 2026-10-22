@@ -35,6 +35,7 @@ START_TIME=$(date +%s.%N)
 # Run the podman container in the background
 podman run -d \
     --name "${CONTAINER_NAME}" \
+    -v ~/.cache/huggingface:/root/.cache/huggingface:Z \
     --ipc=host \
     -p ${PORT}:${PORT} \
     -e OMP_NUM_THREADS=$(nproc) \
