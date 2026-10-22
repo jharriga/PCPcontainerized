@@ -40,15 +40,15 @@ podman run -d \
     -e OMP_NUM_THREADS=$(nproc) \
     "${IMAGE_NAME}" \
     --model "${MODEL_NAME}" \
-    --device cpu \
-    > /dev/null
+    > /dev/null 
+##    --device cpu \
+##    > /dev/null
 if [ $? -eq 0 ]; then
     echo "[*] Container process spawned. Polling for engine readiness..."
 else
     echo "Podman run failed"
     cleanup
 fi
-echo "[*] Container process spawned. Polling for engine readiness..."
 
 HEALTH_TIME=""
 READY_TIME=""
