@@ -22,7 +22,6 @@ trap cleanup EXIT
 
 # --- INITIALIZATION ---
 echo "[*] Pulling image if not present: ${IMAGE_NAME}..."
-##podman pull "${IMAGE_NAME}" > /dev/null 2>&1
 if podman pull "${IMAGE_NAME}" > /dev/null 2>&1; then
     echo "Pull succeeded"
 else
@@ -42,18 +41,16 @@ podman run -d \
     "${IMAGE_NAME}" \
     --model "${MODEL_NAME}" \
     > /dev/null 
-##    --device cpu \
-##    > /dev/null
 if [ $? -eq 0 ]; then
     echo "[*] Container process spawned. Polling for engine readiness..."
 else
-    echo "Podman run failed"
+    echo "Podman run command failed"
     cleanup
 fi
 
 HEALTH_TIME=""
 READY_TIME=""
-TIMEOUT=300 # 5 minutes timeout
+TIMEOUT=600 # 10 minutes timeout
 ELAPSED=0
 
 # --- POLLING LOOP ---
