@@ -36,6 +36,7 @@ START_TIME=$(date +%s.%N)
 # Run the podman container in the background
 podman run -d \
     --name "${CONTAINER_NAME}" \
+    --ipc=host \
     -p ${PORT}:${PORT} \
     -e OMP_NUM_THREADS=$(nproc) \
     "${IMAGE_NAME}" \
