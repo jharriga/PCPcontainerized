@@ -22,7 +22,12 @@ trap cleanup EXIT
 
 # --- INITIALIZATION ---
 echo "[*] Pulling image if not present: ${IMAGE_NAME}..."
-podman pull "${IMAGE_NAME}" > /dev/null 2>&1
+##podman pull "${IMAGE_NAME}" > /dev/null 2>&1
+if podman pull "${IMAGE_NAME}" > /dev/null 2>&1; then
+    echo "Pull succeeded"
+else
+    echo "Pull failed"
+fi    
 
 echo "[*] Starting vLLM CPU Container..."
 START_TIME=$(date +%s.%N)
