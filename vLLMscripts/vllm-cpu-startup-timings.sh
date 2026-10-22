@@ -27,6 +27,7 @@ if podman pull "${IMAGE_NAME}" > /dev/null 2>&1; then
     echo "Pull succeeded"
 else
     echo "Pull failed"
+    cleanup
 fi    
 
 echo "[*] Starting vLLM CPU Container..."
@@ -41,7 +42,12 @@ podman run -d \
     --model "${MODEL_NAME}" \
     --device cpu \
     > /dev/null
-
+if [ $? -eq 0 ]; then
+    echo "[*] Container process spawned. Polling for engine readiness..."
+else
+    echo "Podman run failed"
+    cleanup
+fi
 echo "[*] Container process spawned. Polling for engine readiness..."
 
 HEALTH_TIME=""
