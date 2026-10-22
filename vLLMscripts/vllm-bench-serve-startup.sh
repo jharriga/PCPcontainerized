@@ -38,11 +38,12 @@ podman run -d \
     -v ~/.cache/huggingface:/root/.cache/huggingface:Z \
     --ipc=host \
     -p ${PORT}:${PORT} \
-    -e VLLM_CPU_OMP_THREADS_BIND=nobind \
-    -e OMP_NUM_THREADS=$(nproc) \
     "${IMAGE_NAME}" \
     --model "${MODEL_NAME}" \
     > /dev/null 
+## -e VLLM_CPU_OMP_THREADS_BIND=nobind \
+## -e OMP_NUM_THREADS=$(nproc) \
+
 if [ $? -eq 0 ]; then
     echo "[*] Container process spawned. Polling for engine readiness..."
 else
