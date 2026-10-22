@@ -98,7 +98,7 @@ podman run --rm -it \
     --entrypoint vllm \
     "${IMAGE_NAME}" \
     bench serve \
-        --percentiles 95 \
+        --metric-percentiles 95 \
         --backend vllm \
         --base-url http://127.0.0.1:8000 \
         --model "${MODEL_NAME}" \
